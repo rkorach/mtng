@@ -9,7 +9,7 @@
   $meeting = clean($_POST['meeting']);
 
   // Create SELECT query to see if user exists
-  $select_user_qry = "SELECT id FROM users WHERE first_name='$first_name'";
+  $select_user_qry = "SELECT id FROM users WHERE phone='$phone' OR email='$email'";
   $result = @mysql_query($select_user_qry);
   // Check whether the query was successful or not
   if ($result && mysql_result($result,0)){
