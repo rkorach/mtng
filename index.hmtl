@@ -4,7 +4,7 @@
 </head>
 
 <body>
-		<form action='php/link.php' method="post">
+		<form action='link.php' method="post">
 			<input type="text" name="first_name" id="first_name" placeholder="first name"></input>
 			<input type="text" name="family_name" id="family_name" placeholder="family name"></input>
       <input type="text" name="meeting" id="meeting" placeholder="meeting title"></input>
