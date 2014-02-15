@@ -12,6 +12,8 @@
     $user_id = $res['user_id'];
     $meeting_id = $res['meeting_id'];
 
+    $select_comments_qry = "SELECT * FROM comments WHERE meeting_id='$meeting_id' ORDER BY timestamp ASC";
+    $select_comments_result = @mysql_query($select_comments_qry);
   }
 
 ?>
@@ -25,6 +27,12 @@
 <body>
   <form action='comment.php' method="post">
     <?php
+      if ($select_comments_result) {
+      	// Iterate through the rows
+      	while ($row = @mysql_fetch_assoc($select_comments_result)){
+          echo $row['text'];
+      	}
+      }
       if ($user_id == 0) {
         echo
           '<input type="text" name="first_name" id="first_name" placeholder="first name"></input>',
