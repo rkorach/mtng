@@ -25,7 +25,12 @@
   $create_meeting_qry = "INSERT INTO meeting(title) VALUES('$meeting')";
   $create_meeting_result = @mysql_query($create_meeting_qry);
   $meeting_id =  mysql_insert_id();
-  $link = $user_id . " " . $meeting_id;
+
+  $link = md5($user_id.$meeting_id);
+
+  // create INSERT query to create new url
+  $create_link_qry = "INSERT INTO link(hash, user_id, meeting_id) VALUES('$link', '','$meeting_id')";
+  $create_link_result = @mysql_query($create_link_qry);
 ?>
 
 <html>
@@ -36,7 +41,7 @@
 <body>
   <?php
     echo '<div> Please share the following link to your meeting organizer. This link is personal to him and will let him contact you easily if your input is needed:</br>',
-    'http://www.mtng.eu/meeting?h=' . $link,
+    'http://www.mtng.eu/meeting.php?h=' . $link,
     '</div>';
   ?>
 </body>
