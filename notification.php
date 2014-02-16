@@ -16,11 +16,11 @@
 
     $phone = $recipient['phone'];
     $email = $recipient['email'];
-    $hash = md5($recipient_id.$meeting_id);
+    $hash = md5($sender_id.$meeting_id);
 
     // get the link for the recipient
-    $link_qry = "SELECT * FROM link WHERE recipient_id='$recipient_id' AND meeting_id='$meeting_id";
-    $link_result = @mysql_query($link_creator_qry);
+    $link_qry = "SELECT * FROM link WHERE recipient_id='$recipient_id' AND meeting_id='$meeting_id'";
+    $link_result = @mysql_query($link_qry);
     $db_link = mysql_fetch_assoc($link_result);
 
     if (!$db_link) {

@@ -46,7 +46,7 @@
     // Store the needed values for notification in superglobal variable
     $_POST['notified_user_id'] = mysql_result($link_creator_result,0);
     // The sender of the notification is the recipient of this link
-    $_POST['sending_user_id'] = $recipient_id;
+    $_POST['sending_user_id'] = $author_id;
     $_POST['new_comment'] = $new_comment;
     $_POST['meeting_id'] = $meeting_id;
 
