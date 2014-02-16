@@ -1,6 +1,8 @@
 <?php
   require_once('connect.php');
   require_once('clean.php');
+  require_once('sms.php');
+  require_once('email.php');
 
   // Get all the variables stored in $_POST superglobal variable
   $sender_id = $_POST['sending_user_id'];
@@ -32,10 +34,22 @@
 
     $link = 'http://www.mtng.eu/meeting.php?h=' . $hash;
 
-    // Do some Twilio / AWS / OVH magic to send the notification
-    // Start with email so that we don't have to pay for sms
-    // during the whole testing phase
-    // $link, $phone, $email, $new_comment are ready to use
+    // Notify
+    $meeting_name_qry= "SELECT title FROM meeting WHERE meeting_id='$meeting_id'";
+    $meeting_name_result= @mysql_query($meeting_name_qry);
+    $meeting_name= mysql_result($meeting_name_result,0);
+
+    if($phone){
+    	$message="Your help is required on the meeting $meeting_name. Follow this link to help them: $link";
+    	sendSMS($phone,$message);
+    }
+    if($email){
+    	$message="Here is a new comment regarding $meeting_name:\n
+    						$new_comment\n
+    						$link\n
+    					 ";
+    	sendEmail($email,$message);
+    }
 
     // Clear the superglobal variable
     $_POST['sending_user_id'] = null;
@@ -43,5 +57,4 @@
     $_POST['new_comment'] = null;
     $_POST['meeting_id'] = null;
   }
-
 ?>

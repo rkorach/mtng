@@ -1,0 +1,37 @@
+body{
+	background-color:#333333;
+	font-family: Arial, sans-serif;
+}
+
+#box{
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	width: 580px;
+	background-color: #F5F5F5;
+	padding: 10px 10px 10px 10px;
+}
+
+.text_field{
+	width:570px;
+	height: 30px;
+	margin-bottom: 20px;
+	font-size: 13pt;
+}
+
+.button{
+	width: 200px;
+	height: 50px;
+	margin-left: 185px;
+	margin-bottom: 10px;
+	background-color: #12a192;
+	border: none;
+	color: white;
+	font-size: 10pt;
+}
+
+h1{
+	font-size: 22pt;
+	text-align: center;
+	font-weight: normal;
+}
