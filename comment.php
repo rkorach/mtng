@@ -36,5 +36,16 @@
   $create_comment_result = @mysql_query($create_comment_qry);
   $comment_id = mysql_insert_id();
 
+
+  $link_creator_qry = "SELECT creator_id FROM link WHERE hash='$hash'";
+  $link_creator_result = @mysql_query($link_creator_qry);
+  if ($link_creator_result && mysql_result($link_creator_result,0)) {
+     $_POST['notified_user_id'] = mysql_result($link_creator_result,0);
+     $_POST['sending_user_id'] = $recipient_id;
+     $_POST['new_comment'] = $new_comment;
+     $_POST['meeting_id'] = $meeting_id;
+     include_once('notification.php');
+  }
+
 	header("location: meeting.php?h=".$hash);
 ?>
