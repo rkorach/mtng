@@ -7,7 +7,9 @@
   $author_id = clean($_POST['author_id']);
   $meeting_id = clean($_POST['meeting_id']);
 
-  if (!$user_id) {
+  $recipient_id = clean($_POST['recipient_id']);
+
+  if (!$recipient_id) {
     $first_name = clean($_POST['first_name']);
     $family_name = clean($_POST['family_name']);
     $phone = clean($_POST['phone']);
@@ -26,7 +28,7 @@
       $create_user_result = @mysql_query($create_user_qry);
       $author_id = mysql_insert_id();
     }
-    $link_update_qry = "UPDATE link SET user_id='$author_id' WHERE hash='$hash'";
+    $link_update_qry = "UPDATE link SET recipient_id='$author_id' WHERE hash='$hash'";
     $link_update_result = @mysql_query($link_update_qry);
   }
 

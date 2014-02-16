@@ -9,7 +9,8 @@
   if ($select_hash_result) {
     $res = mysql_fetch_assoc($select_hash_result);
 
-    $user_id = $res['user_id'];
+    $creator_id = $res['creator_id'];
+    $recipient_id = $res['recipient_id'];
     $meeting_id = $res['meeting_id'];
 
     $select_comments_qry = "SELECT * FROM comments WHERE meeting_id='$meeting_id' ORDER BY timestamp ASC";
@@ -30,8 +31,8 @@
       if ($select_comments_result) {
       	// Iterate through the rows
       	while ($row = @mysql_fetch_assoc($select_comments_result)){
-          $user_id = $row['author_id'];
-          $select_author_qry = "SELECT * FROM users WHERE id='$user_id'";
+          $author_id = $row['author_id'];
+          $select_author_qry = "SELECT * FROM users WHERE id='$author_id'";
           $select_author_result = @mysql_query($select_author_qry);
           $user = mysql_fetch_assoc($select_author_result);
           echo
@@ -41,14 +42,14 @@
             $row['text'],'</div>';
       	}
       }
-      if ($user_id == 0) {
+      if ($recipient_id == 0) {
         echo
           '<input type="text" name="first_name" id="first_name" placeholder="first name"></input>',
           '<input type="text" name="family_name" id="family_name" placeholder="family name"></input>',
           '<input type="text" name="phone" id="phone" placeholder="phone"></input>',
           '<input type="text" name="email" id="email" placeholder="email"></input>';
       } else {
-        echo '<input name="author_id" type="hidden" value="',$res['user_id'],'">';
+        echo '<input name="author_id" type="hidden" value="',$res['recipient_id'],'">';
       }
     ?>
     <textarea name="comment" id="comment" placeholder="Comment"></textarea>

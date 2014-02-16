@@ -29,7 +29,7 @@
   $link = md5($user_id.$meeting_id);
 
   // create INSERT query to create new url
-  $create_link_qry = "INSERT INTO link(hash, user_id, meeting_id) VALUES('$link', '','$meeting_id')";
+  $create_link_qry = "INSERT INTO link(hash, creator_id, recipient_id, meeting_id) VALUES('$link', '$user_id', '', '$meeting_id')";
   $create_link_result = @mysql_query($create_link_qry);
 ?>
 
