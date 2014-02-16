@@ -30,7 +30,15 @@
       if ($select_comments_result) {
       	// Iterate through the rows
       	while ($row = @mysql_fetch_assoc($select_comments_result)){
-          echo $row['text'];
+          $user_id = $row['author_id'];
+          $select_author_qry = "SELECT * FROM users WHERE id='$user_id'";
+          $select_author_result = @mysql_query($select_author_qry);
+          $user = mysql_fetch_assoc($select_author_result);
+          echo
+            '<div>', $user['first_name'], ' ',
+            $user['family_name'], ' (',
+            $row['timestamp'], '): ',
+            $row['text'],'</div>';
       	}
       }
       if ($user_id == 0) {
