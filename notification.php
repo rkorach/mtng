@@ -7,7 +7,7 @@
   $new_comment = $_POST['new_comment'];
   $meeting_id = $_POST['meeting_id'];
 
-  if ($user_id) {
+  if ($recipient_id) {
     $select_user_qry = "SELECT * FROM users WHERE id='$recipient_id'";
     $select_user_result = @mysql_query($select_user_qry);
     $recipient = mysql_fetch_assoc($select_user_result);
@@ -18,11 +18,11 @@
 
     $link_qry = "SELECT * FROM link WHERE recipient_id='$recipient_id' AND meeting_id='$meeting_id";
     $link_result = @mysql_query($link_creator_qry);
-    $db_link = mysql_fetch_assoc($link_result)
+    $db_link = mysql_fetch_assoc($link_result);
 
     if (!$db_link) {
       // create INSERT query to create new url
-      $create_link_qry = "INSERT INTO link(hash, creator_id, recipient_id, meeting_id) VALUES('$link', '$sender_id', '$recipient_id', '$meeting_id')";
+      $create_link_qry = "INSERT INTO link(hash, creator_id, recipient_id, meeting_id) VALUES('$hash', '$sender_id', '$recipient_id', '$meeting_id')";
       $create_link_result = @mysql_query($create_link_qry);
     }
 
@@ -36,7 +36,7 @@
     $_POST['sending_user_id'] = null;
     $_POST['notified_user_id'] = null;
     $_POST['new_comment'] = null;
-    $_POST['meeting_id']; = null;
+    $_POST['meeting_id'] = null;
   }
 
 ?>
