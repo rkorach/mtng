@@ -65,10 +65,9 @@
           // It is the first time the link is seen by the organiser.
           // Ask his details
           echo
-            '<input type="text" name="first_name" id="first_name" placeholder="first name"></input>',
-            '<input type="text" name="family_name" id="family_name" placeholder="family name"></input>',
-            '<input type="text" name="phone" id="phone" placeholder="phone"></input>',
-            '<input type="text" name="email" id="email" placeholder="email"></input>';
+            '<input class="text_field" type="text" name="first_name" id="first_name" placeholder="first name"></input>',
+            '<input class="text_field" type="text" name="family_name" id="family_name" placeholder="family name"></input>',
+            '<input class="text_field" type="text" name="email" id="email" placeholder="email"></input>';
         } else {
           // The person already has an id and is attached to this link.
           // Attach him to the comment (through hidden field)
