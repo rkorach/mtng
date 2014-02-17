@@ -1,6 +1,7 @@
 <?php
   require_once('connect.php');
   require_once('clean.php');
+  require_once('notification.php');
 
   // Last comment
   $new_comment = clean($_POST['comment']);
@@ -43,15 +44,12 @@
   $link_creator_qry = "SELECT creator_id FROM link WHERE hash='$hash'";
   $link_creator_result = @mysql_query($link_creator_qry);
   if ($link_creator_result && mysql_result($link_creator_result,0)) {
-    // Store the needed values for notification in superglobal variable
-    $_POST['notified_user_id'] = mysql_result($link_creator_result,0);
-    // The sender of the notification is the recipient of this link
-    $_POST['sending_user_id'] = $author_id;
-    $_POST['new_comment'] = $new_comment;
-    $_POST['meeting_id'] = $meeting_id;
+    // Now the sender of the notification is the recipient of this link
+    // and the recipient of the notification is the creator of this link
+    $recipient_id = mysql_result($link_creator_result,0);
 
     // Notify
-    include_once('notification.php');
+    notify($author_id, $recipient_id, $new_comment, $meeting_id);
   }
 
   // Send back to display meeting.php?h=HaSh where the history of comments appear
