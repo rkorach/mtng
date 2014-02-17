@@ -52,9 +52,9 @@
 
           // Display author, timestamp and comment
           echo
-            '<h2>', $user['first_name'], ' ', $user['family_name'], '</h2>\n',
-            '<h3> (', $row['timestamp'], ')</h3>\n',
-            '<p>', $row['text'], '</p>\n';
+            '<h2>', $user['first_name'], ' ', $user['family_name'], '</h2>',
+            '<h3> (', $row['timestamp'], ')</h3>',
+            '<p>', $row['text'], '</p>';
       	}
       }
     ?>
