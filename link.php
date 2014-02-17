@@ -36,17 +36,22 @@
   $create_link_result = @mysql_query($create_link_qry);
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>mtng</title>
+
+	<title>mtng - your link to share</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
-  <?php
-    // print the link on screen for the user, for him to share to the meeting organizer
-    echo '<div> Please share the following link to your meeting organizer. This link is personal to him and will let him contact you easily if your input is needed:</br>',
-    'http://www.mtng.eu/meeting.php?h=' . $link,
-    '</div>';
-  ?>
+	<div id="box">
+		<h1>Share this link with your coworkers:</h1>
+		<form>
+			<input class='text_field' type='text' name='link' value=<?php echo'http://www.mtng.eu/meeting.php?h=' . $link;?>></input>
+		</form>
+	</div>
 </body>
 </html>
