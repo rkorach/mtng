@@ -11,7 +11,7 @@
   $meeting = clean($_POST['meeting']);
 
   // Check if user exists
-  $select_user_qry = "SELECT id FROM users WHERE phone='$phone' OR email='$email'";
+  $select_user_qry = "SELECT id FROM users WHERE phone='$phone' AND phone <> '' OR email='$email' AND email <> ''";
   $result = @mysql_query($select_user_qry);
   if ($result && mysql_result($result,0)){
     // User already exists
