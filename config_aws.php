@@ -1,6 +1,6 @@
 <?php
-	define('DB_HOST', '???');
-  define('DB_USER', '???');
-  define('DB_PASSWORD', '???');
-  define('DB_DATABASE', '???');
+  define('DB_HOST', 'localhost:3306');
+  define('DB_USER', 'mtng_admin');
+  define('DB_PASSWORD', 'awsmsqlpassword');
+  define('DB_DATABASE', 'mtng');
 ?>
