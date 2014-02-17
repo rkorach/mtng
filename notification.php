@@ -29,11 +29,12 @@
 
       $link = 'http://www.mtng.eu/meeting.php?h=' . $hash;
 
-      // Notify
-      $meeting_name_qry= "SELECT title FROM meeting WHERE meeting_id='$meeting_id'";
+      // Get meeting name
+      $meeting_name_qry= "SELECT title FROM meeting WHERE id='$meeting_id'";
       $meeting_name_result= @mysql_query($meeting_name_qry);
       $meeting_name= mysql_result($meeting_name_result,0);
 
+      // Notify
       if($phone){
       	$message="Your help is required on the meeting $meeting_name. Follow this link to help them: $link";
         // sendSMS($phone,$message);
