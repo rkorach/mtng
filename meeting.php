@@ -59,7 +59,7 @@
 
           // Display author, timestamp and comment
           echo
-            '<h2>', $user['first_name'], ' ', $user['family_name'], '</h2>',
+            '<h2>', $user['first_name'], ' ', $user['last_name'], '</h2>',
             '<h3> (', $row['timestamp'], ')</h3>',
             '<p>', $row['text'], '</p>';
       	}
@@ -73,7 +73,7 @@
           // Ask his details
           echo
             '<input class="text_field" type="text" name="first_name" id="first_name" placeholder="first name"></input>',
-            '<input class="text_field" type="text" name="family_name" id="family_name" placeholder="family name"></input>',
+            '<input class="text_field" type="text" name="last_name" id="last_name" placeholder="family name"></input>',
             '<input class="text_field" type="text" name="email" id="email" placeholder="email"></input>';
         } else {
           // The person already has an id and is attached to this link.

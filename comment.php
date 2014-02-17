@@ -13,7 +13,7 @@
     // It was the first time the organiser went on the link
     // get his details
     $first_name = clean($_POST['first_name']);
-    $family_name = clean($_POST['family_name']);
+    $last_name = clean($_POST['last_name']);
     $phone = clean($_POST['phone']);
     $email = clean($_POST['email']);
 
@@ -25,7 +25,7 @@
       $author_id = mysql_result($result,0);
     } else {
       // Create new user
-      $create_user_qry = "INSERT INTO users(first_name, family_name, phone, email) VALUES('$first_name','$family_name','$phone','$email')";
+      $create_user_qry = "INSERT INTO users(first_name, last_name, phone, email) VALUES('$first_name','$last_name','$phone','$email')";
       $create_user_result = @mysql_query($create_user_qry);
       $author_id = mysql_insert_id();
 
