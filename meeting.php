@@ -20,6 +20,13 @@
     // Get all comments for this meeting between these two people
     $select_comments_qry = "SELECT * FROM comments WHERE meeting_id='$meeting_id' ORDER BY timestamp ASC";
     $select_comments_result = @mysql_query($select_comments_qry);
+
+    // Get meeting name
+    $select_meeting_qry = "SELECT title FROM meeting WHERE id='$meeting_id'";
+    $select_meeting_result = @mysql_query($select_meeting_qry);
+    if ($select_meeting_result) {
+      $meeting_name = mysql_result($select_meeting_result, 0);
+    }
   }
 
 ?>
@@ -38,7 +45,7 @@
 <body>
 
 	<div id="box">
-		<h1><?php echo "$meeting_name";?></h1>
+		<h1><?php echo $meeting_name;?></h1>
 
     <?php
       if ($select_comments_result) {
