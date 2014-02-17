@@ -25,13 +25,21 @@
 ?>
 
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+
 	<title>mtng</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
-  <form action='comment.php' method="post">
+
+	<div id="box">
+		<h1><?php echo "$meeting_name";?></h1>
+
     <?php
       if ($select_comments_result) {
       	// Iterate through the comments
@@ -44,35 +52,38 @@
 
           // Display author, timestamp and comment
           echo
-            '<div>', $user['first_name'], ' ',
-            $user['family_name'], ' (',
-            $row['timestamp'], '): ',
-            $row['text'],'</div>';
+            '<h2>', $user['first_name'], ' ', $user['family_name'], '</h2>\n',
+            '<h3> (', $row['timestamp'], ')</h3>\n',
+            '<p>', $row['text'], '</p>\n';
       	}
       }
-
-      if ($recipient_id == 0) {
-        // It is the first time the link is seen by the organiser.
-        // Ask his details
-        echo
-          '<input type="text" name="first_name" id="first_name" placeholder="first name"></input>',
-          '<input type="text" name="family_name" id="family_name" placeholder="family name"></input>',
-          '<input type="text" name="phone" id="phone" placeholder="phone"></input>',
-          '<input type="text" name="email" id="email" placeholder="email"></input>';
-      } else {
-        // The person already has an id and is attached to this link.
-        // Attach him to the comment (through hidden field)
-        echo '<input name="author_id" type="hidden" value="',$res['recipient_id'],'">';
-      }
     ?>
-    <textarea name="comment" id="comment" placeholder="Comment"></textarea>
-    <?php
-      // also send the hash and meeting id (through hidden fields)
-      echo '<input name="hash" type="hidden" value="',$hash,'">';
-      echo '<input name="meeting_id" type="hidden" value="',$meeting_id,'">';
-    ?>
-    <input type='submit' id="submit" value="Send">
-	</form>
 
+    <form action='comment.php' method="post">
+      <?php
+        if ($recipient_id == 0) {
+          // It is the first time the link is seen by the organiser.
+          // Ask his details
+          echo
+            '<input type="text" name="first_name" id="first_name" placeholder="first name"></input>',
+            '<input type="text" name="family_name" id="family_name" placeholder="family name"></input>',
+            '<input type="text" name="phone" id="phone" placeholder="phone"></input>',
+            '<input type="text" name="email" id="email" placeholder="email"></input>';
+        } else {
+          // The person already has an id and is attached to this link.
+          // Attach him to the comment (through hidden field)
+          echo '<input name="author_id" type="hidden" value="',$res['recipient_id'],'">';
+        }
+      ?>
+      <textarea name="comment" class="text_field" id="comment" placeholder='Write your comment here'></textarea>
+      <?php
+        // also send the hash and meeting id (through hidden fields)
+        echo '<input name="hash" type="hidden" value="',$hash,'">';
+        echo '<input name="meeting_id" type="hidden" value="',$meeting_id,'">';
+      ?>
+      <input class='button' type='submit' id="submit" value="Send">
+  	</form>
+
+	</div>
 </body>
 </html>
