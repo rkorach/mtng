@@ -11,11 +11,11 @@ function sendSMS($to,$message){
 	try
 	{
 	$soap = new SoapClient("https://www.ovh.com/soapi/soapi-re-1.8.wsdl");
-	$session = $soap->login("$nic", "$pass","fr", false);
+	// $session = $soap->login("$nic", "$pass","fr", false);
 	
 	//echo "login successfull\n"; //Test connexion
 	
-	$result = $soap->telephonySmsSend($session, "$sms_compte", "$from", "$to", "$message", "", "1", "", "");
+	$result = $soap->telephonySmsSend("$nic", "$pass", "$sms_compte", "$from", "$to", "$message");
 	
 	//echo "telephonySmsSend successfull\n"; //Test send
 	
