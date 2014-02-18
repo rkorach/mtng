@@ -39,7 +39,31 @@
 	<title>mtng</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="style.css">
-
+	<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+	<script>
+		$(function() {
+			$("#organizerform").validate({
+				rules: {
+					first_name: "required",
+					family_name: "required",
+					email: {
+						required: true,
+						email: true
+					},
+					comment: "required"
+				},
+				messages: {
+					first_name: "Please enter your first name",
+					family_name: "Please enter your last name",
+					email: {
+						required: "Please enter your email"
+					},
+					comment: "Please enter your comment",
+				}
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -66,7 +90,7 @@
       }
     ?>
 
-    <form action='comment.php' method="post">
+    <form action='comment.php' id='organizerform' method="post">
       <?php
         if ($recipient_id == 0) {
           // It is the first time the link is seen by the organiser.
