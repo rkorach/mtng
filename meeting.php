@@ -46,7 +46,7 @@
 			$("#organizerform").validate({
 				rules: {
 					first_name: "required",
-					family_name: "required",
+					last_name: "required",
 					email: {
 						required: true,
 						email: true
@@ -55,7 +55,7 @@
 				},
 				messages: {
 					first_name: "Please enter your first name",
-					family_name: "Please enter your last name",
+					last_name: "Please enter your last name",
 					email: {
 						required: "Please enter your email"
 					},
