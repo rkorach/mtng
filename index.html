@@ -25,12 +25,12 @@
 					phone: {
 						required: "Please enter your phone number"
 					},
-					meeting: "Please provide a password",
+					meeting: "Please provide a meeting name",
 				}
 			});
 	    $.validator.addMethod("intphone",
 	            function(value, element) {
-	                    return /^[+0-9]+$/.test(value);
+	                    return /^\++[0-9]/.test(value);
 	            },
 	    "Enter your phone number with the country code like this: +33632831832"
 	    );
