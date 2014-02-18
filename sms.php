@@ -1,12 +1,12 @@
 <?php
 function sendSMS($to,$message){
 	//Seesion OVH
-	$nic="xx123456-ovh";
-	$pass="ovh123456";
-	$sms_compte="sms-xx123456-1";
+	$nic="mtng";
+	$pass="a2OsMijk";
+	$sms_compte="sms-dj219716-1";
 	
 	//Our OVH phone number
-	$from="+XX";
+	$from="COTTONTRACK";
 	
 	try
 	{
