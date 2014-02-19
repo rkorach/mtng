@@ -36,8 +36,8 @@
 
       // Notify
       if($phone){
-      	$message="Your help is required on the meeting $meeting_name. Follow this link to help them: $link";
-        // sendSMS($phone,$message);
+      	$message="Your help is required on a meeting. Follow this link to help them: $link";
+				sendSMS($phone,$message);
       }
       if($email){
       	$message="Here is a new comment regarding $meeting_name:\n
