@@ -72,6 +72,32 @@
 			});
 		});
 	</script>
+
+  <script>
+  (function(){
+    $(document).ready(function(){
+      setInterval(function(){
+        var lHash = document.location.href.split('h=');
+        var sHash = lHash[lHash.length - 1];
+        $.get("getcomments.php?h=" + sHash + "&uid=" + <?php echo $user_id;?>, function(lComments){
+          lComments = JSON.parse(lComments);
+          var iLength = lComments.length;
+          var l$Comments = [];
+          for (var i = 0; i < iLength; i++) {
+            var comment = lComments[i];
+            var $comment = $('<div class="comment"></div>');
+            var $author = $('<h2></h2>').text(comment['author']);
+            var $timestamp = $('<h3></h3>').text('(' + comment['timestamp'] + ')');
+            var $text = $('<p></p>').text(comment['text']);
+            l$Comments.push($comment.append($author, $timestamp, $text));
+          }
+          $("#comments").empty().append(l$Comments);
+        });
+      },10000);
+    });
+  })();
+  </script>
+
 </head>
 
 <body>
@@ -106,7 +132,6 @@
       	}
       }
     ?>
-
   </div>
     <form action='comment.php' id='organizerform' method="post">
       <textarea name="comment" class="text_field" id="comment" placeholder='Write your comment here'></textarea>
