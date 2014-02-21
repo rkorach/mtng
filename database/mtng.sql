@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 16 Février 2014 à 18:17
+-- Généré le: Ven 21 Février 2014 à 12:57
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de données: `mtng`
+-- Base de données: `mtng_log`
 --
 
 -- --------------------------------------------------------
@@ -27,34 +27,22 @@ CREATE TABLE `comments` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `meeting_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `link`
+-- Structure de la table `meetings`
 --
 
-CREATE TABLE `link` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hash` varchar(255) NOT NULL,
-  `meeting_id` int(11) NOT NULL,
-  `creator_id` int(11) NOT NULL,
-  `recipient_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `meeting`
---
-
-CREATE TABLE `meeting` (
+CREATE TABLE `meetings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
+  `hash` varchar(255) NOT NULL,
+  `orga_id` int(11) NOT NULL,
+  `absentee_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -68,5 +56,6 @@ CREATE TABLE `users` (
   `first_name` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
