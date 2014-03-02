@@ -13,6 +13,13 @@
 
     // Creator of this link
     $creator_id = $res['creator_id'];
+    $name_qry = "SELECT * FROM users WHERE id='$creator_id'";
+    $name_result = @mysql_query($name_qry);
+    if ($name_result) {
+      $name = mysql_fetch_assoc($name_result);
+      $creator_name = $name['first_name'].' '.$name['last_name'];
+    }
+
     // Recipient of this link, namely the person currently watching it
     $recipient_id = $res['recipient_id'];
     $meeting_id = $res['meeting_id'];
@@ -95,8 +102,9 @@
       <?php
         if ($recipient_id == 0) {
           // It is the first time the link is seen by the organiser.
-          // Ask his details
+          // Ask his details, and put the explainer
           echo
+            '<h4 class="explainer">Please use this form if you need an input from '.$creator_name.' during the "'.$meeting_name.'" meeting. He will be notified by sms.</br> Whenever he answers you, you will be notified of his answer by email</h4>',
             '<input class="text_field" type="text" name="first_name" id="first_name" placeholder="first name"></input>',
             '<input class="text_field" type="text" name="last_name" id="last_name" placeholder="family name"></input>',
             '<input class="text_field" type="text" name="email" id="email" placeholder="email"></input>';
