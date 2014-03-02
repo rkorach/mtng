@@ -49,7 +49,8 @@
 
 <body>
 	<div id="box">
-		<h1>Share this link with your coworkers:</h1>
+		<h1>Share this link with your meeting organizer:</h1>
+    <h4>He will be able to reach out to you easily through a form if he quickly needs your input during the meeting.</br>You will be notified by sms, and will be able to answer him through the link you will receive.</h4>
 		<form>
 			<input class='text_field' type='text' name='link' value=<?php echo'http://www.mtng.eu/meeting.php?h=' . $link;?>></input>
 		</form>
