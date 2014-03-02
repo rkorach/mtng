@@ -1,5 +1,5 @@
 <?php
-  require_once('config.php');
+  require_once('config_aws.php');
 
   //Connect to mysql server
   $connection = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
